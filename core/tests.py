@@ -10,7 +10,7 @@ class XPTesting(TestCase):
         self.user = User(username='john')
         self.user.save()
 
-    def test_basics(self):
+    def test_the_basics(self):
         """
         create two accounts and perform a transaction
         """
