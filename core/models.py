@@ -1,6 +1,10 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+EXPENSE = 'expense'
+ASSET = 'asset'
+INCOME = 'income'
+
 
 class User(AbstractUser):
     pass
@@ -18,4 +22,13 @@ class XpAccount(models.Model):
     amount = models.DecimalField(
         max_digits=12,
         decimal_places=2
+    )
+    acc_type = models.CharField(
+        choices=[
+            (EXPENSE, 'Expense'),
+            (ASSET, 'Asset'),
+            (INCOME, 'Income')
+        ],
+        default=EXPENSE,
+        max_length=16
     )
