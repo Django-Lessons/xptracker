@@ -32,3 +32,32 @@ class XpAccount(models.Model):
         default=EXPENSE,
         max_length=16
     )
+
+class XpTransaction(models.Model):
+
+    # transaction's date
+    created_at = models.DateField()
+
+    description = models.TextField()
+
+    amount = models.DecimalField(
+        max_digits=12,
+        decimal_places=2
+    )
+
+    src = models.ForeignKey(
+        'XpAccount',
+        on_delete=models.CASCADE,
+        related_name='src'
+    )
+
+    dst = models.ForeignKey(
+        'XpAccount',
+        on_delete=models.CASCADE,
+        related_name='dst'
+    )
+
+    user = models.ForeignKey(
+        'User',
+        on_delete=models.CASCADE
+    )
