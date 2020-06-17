@@ -66,6 +66,8 @@ def start(request):
     Help user to create first couple of accounts.
     Let him/her selects from suggested accounts
     """
+    if request.method == 'POST':
+        pass
     xpaccounts = [
         XpAccount(**acc) for acc in account_templates
     ]
