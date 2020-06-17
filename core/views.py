@@ -6,7 +6,7 @@ from .models import ASSET, EXPENSE, INCOME, XpAccount
 account_templates = [
     {
         'title': "Bank Account",
-        'description': "You bank account",
+        'description': "Your bank account",
         'acc_type': ASSET,
         'amount': 1000
     },
