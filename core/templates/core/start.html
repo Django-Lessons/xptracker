@@ -4,7 +4,7 @@
     <div class="xp-accounts">
         <h1>Create accounts from templates</h1>
         
-        <form>
+        <form action="{% url 'start' %}" method="POST">
             {% csrf_token %}
             <ul class="list-group my-3">
                 {% for account in xpaccounts %}

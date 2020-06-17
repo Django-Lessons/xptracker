@@ -8,36 +8,43 @@ account_templates = [
         'title': "Bank Account",
         'description': "You bank account",
         'acc_type': ASSET,
+        'amount': 1000
     },
     {
         'title': "Income Account",
         'description': "Account for your income like salary, consulting.",
         'acc_type': INCOME,
+        'amount': 0
     },
     {
         'title': "Groceries",
         'description': "All groceries expenses go here",
-        'acc_type': EXPENSE
+        'acc_type': EXPENSE,
+        'amount': 0
     },
     {
         'title': "Rent",
         'description': "Monthly Rent",
-        'acc_type': EXPENSE
+        'acc_type': EXPENSE,
+        'amount': 0
     },
     {
         'title': "Insurances",
         'description': "All kind of insurances",
-        'acc_type': EXPENSE
+        'acc_type': EXPENSE,
+        'amount': 0
     },
     {
         'title': "Insurances",
         'description': "All kind of insurances",
-        'acc_type': EXPENSE
+        'acc_type': EXPENSE,
+        'amount': 0
     },
     {
         'title': "Utility Bills",
         'description': "Like electricity bills, tv, internet",
-        'acc_type': EXPENSE
+        'acc_type': EXPENSE,
+        'amount': 0
     }
 ]
 
