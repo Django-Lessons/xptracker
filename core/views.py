@@ -37,12 +37,6 @@ account_templates = [
         'amount': 0
     },
     {
-        'title': "Insurances",
-        'description': "All kind of insurances",
-        'acc_type': EXPENSE,
-        'amount': 0
-    },
-    {
         'title': "Utility Bills",
         'description': "Like electricity bills, tv, internet",
         'acc_type': EXPENSE,
