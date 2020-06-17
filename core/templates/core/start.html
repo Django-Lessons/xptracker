@@ -7,21 +7,21 @@
         <form action="{% url 'start' %}" method="POST">
             {% csrf_token %}
             <ul class="list-group my-3">
-                {% for account in xpaccounts %}
+                {% for form in formset %}
                     <li class="list-group-item">
-                        <input class="form-check-input" name="selected" type="checkbox">
+                        {{ form.selected }}
                         <div class="form-row">
                             <div class="col">
-                                <input class="form-control" name="title" value="{{ account.title }}" />
+                                {{ form.title }}
                             </div>
                             <div class="col">
-                                <input class="form-control" name="amount" value="{{ account.amount }}" />
+                                {{ form.amount }}
                             </div>
                             <div class="col">
-                                <input class="form-control" name="description" value="{{ account.description }}" />
+                                {{ form.description }}
                             </div>
                             <div class="col">
-                                <input disabled class="form-control" name="acc_type" value="{{account.acc_type}}">
+                                {{ form.acc_type }}
                             </div>
                         </div>
                     </li>

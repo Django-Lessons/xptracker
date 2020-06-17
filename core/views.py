@@ -1,6 +1,8 @@
 from django.contrib.auth.decorators import login_required
+from django.forms import formset_factory
 from django.shortcuts import redirect, render
 
+from .forms import XpAccountForm
 from .models import ASSET, EXPENSE, INCOME, XpAccount
 
 account_templates = [
@@ -68,11 +70,15 @@ def start(request):
     """
     if request.method == 'POST':
         pass
-    xpaccounts = [
-        XpAccount(**acc) for acc in account_templates
-    ]
+
+    XpAccountFormSet = formset_factory(XpAccountForm, extra=0)
+
+    formset = XpAccountFormSet(
+        initial=account_templates,
+    )
+
     return render(
         request,
         'core/start.html',
-        {'xpaccounts': xpaccounts}
+        {'formset': formset}
     )
