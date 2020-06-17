@@ -6,6 +6,7 @@
         
         <form action="{% url 'start' %}" method="POST">
             {% csrf_token %}
+            {{ formset.management_form }}
             <ul class="list-group my-3">
                 {% for form in formset %}
                     <li class="list-group-item">

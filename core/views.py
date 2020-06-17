@@ -61,6 +61,18 @@ def index(request):
 
 
 @login_required
+def accounts(request):
+
+    accounts = XpAccount.objects.filter(user=request.user)
+
+    return render(
+        request,
+        'core/accounts.html',
+        {'accounts': accounts}
+    )
+
+
+@login_required
 def start(request):
     """
     User will be redirected here if he/she does not have
@@ -68,10 +80,16 @@ def start(request):
     Help user to create first couple of accounts.
     Let him/her selects from suggested accounts
     """
-    if request.method == 'POST':
-        pass
-
     XpAccountFormSet = formset_factory(XpAccountForm, extra=0)
+
+    if request.method == 'POST':
+        xpaccounts_formset = XpAccountFormSet(request.POST)
+        if xpaccounts_formset.is_valid():
+            for form in xpaccounts_formset:
+                attrs = form.cleaned_data
+                attrs.pop('selected', False)
+                attrs['user_id'] = request.user.id
+                XpAccount.objects.create(**attrs)
 
     formset = XpAccountFormSet(
         initial=account_templates,

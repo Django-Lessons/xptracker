@@ -22,4 +22,6 @@ class XpAccountForm(forms.Form):
             (INCOME, 'Income')
         ],
     )
-    selected = forms.BooleanField()
+    selected = forms.BooleanField(
+        required=False
+    )

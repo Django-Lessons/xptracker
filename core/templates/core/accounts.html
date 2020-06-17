@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+
+{% block central_content %}
+    <div class="xp-accounts">
+        <h1>Accountss</h1>
+        
+        <ul class="list-group my-3">
+            {% for acc in accounts %}
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-3">
+                            {{ acc.title }}
+                        </div>
+                        <div class="col-1">
+                            {{ acc.amount }}
+                        </div>
+                        <div class="col-7">
+                            {{ acc.description }}
+                        </div>
+                        <div class="col-1">
+                            {{ acc.acc_type }}
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+{% endblock central_content %}
