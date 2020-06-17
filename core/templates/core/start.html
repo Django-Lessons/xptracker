@@ -3,13 +3,30 @@
 {% block central_content %}
     <div class="xp-accounts">
         <h1>Create accounts from templates</h1>
-        <ul>
-        {% for account in accouns %}
-            <li>
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                <input name="title" value="{{ account.title }}" />
-                <input name="description" value="{{ account.description }}" />
-            </li>
-        {% endfor %}
-        </ul>
+        
+        <form>
+            {% csrf_token %}
+            <ul class="list-group my-3">
+                {% for account in xpaccounts %}
+                    <li class="list-group-item">
+                        <input class="form-check-input" type="checkbox" value="" id="
+                        defaultCheck1">
+                        <div class="form-row">
+                            <div class="col">
+                                
+                                <input class="form-control" name="title" value="{{ account.title }}" />
+                            </div>
+                            <div class="col">
+                                <input class="form-control" name="description" value="{{ account.description }}" />
+                            </div>
+                            <div class="col">
+                                <input disabled class="form-control" name="acc_type" value="{{account.acc_type}}">
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+             <button type="submit" class="btn btn-success">Create from Selected</button> or <a href="#">Create new XpAccount</a>
+        </form>
+        
 {% endblock central_content %}
