@@ -45,16 +45,16 @@ class XpTracker(TestCase):
         perform_transaction(
             src=bank_account,
             dst=groceries,
-            amount=37.29,
+            amount=50,
             description="I did my groceries today at MegaDiscounter"
         )
 
         self.assertEqual(
             groceries.amount,
-            37.29
+            50
         )
 
         self.assertEqual(
             bank_account.amount,
-            962.71  # 1000.00 - 37.29
+            950.00
         )
