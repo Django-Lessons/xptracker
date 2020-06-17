@@ -28,7 +28,6 @@ SITE_ID = 1
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [

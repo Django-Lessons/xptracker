@@ -74,6 +74,9 @@ def start(request):
     Help user to create first couple of accounts.
     Let him/her selects from suggested accounts
     """
+    if XpAccount.objects.count() != 0:
+        return redirect('accounts')
+
     XpAccountFormSet = formset_factory(XpAccountForm, extra=0)
 
     if request.method == 'POST':
@@ -81,9 +84,12 @@ def start(request):
         if xpaccounts_formset.is_valid():
             for form in xpaccounts_formset:
                 attrs = form.cleaned_data
-                attrs.pop('selected', False)
-                attrs['user_id'] = request.user.id
-                XpAccount.objects.create(**attrs)
+                if attrs['selected']:
+                    attrs.pop('selected', False)
+                    attrs['user_id'] = request.user.id
+                    XpAccount.objects.create(**attrs)
+
+            return redirect('index')
 
     formset = XpAccountFormSet(
         initial=account_templates,
