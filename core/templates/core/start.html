@@ -5,24 +5,26 @@
         <h1>Create accounts from templates</h1>
         
         <form action="{% url 'start' %}" method="POST">
+            
             {% csrf_token %}
+            {{ formset.management_form }}
+
             <ul class="list-group my-3">
-                {% for account in xpaccounts %}
+                {% for form in formset %}
                     <li class="list-group-item">
-                        <input class="form-check-input" name="selected" type="checkbox" value="" id="
-                        defaultCheck1">
+                        {{ form.selected }}
                         <div class="form-row">
                             <div class="col">
-                                <input class="form-control" name="name" value="{{ account.name }}" />
+                                {{ form.name }}
                             </div>
                             <div class="col">
-                                <input class="form-control" name="amount" value="{{ account.amount }}" />
+                                {{ form.amount }}
                             </div>
                             <div class="col">
-                                <input class="form-control" name="description" value="{{ account.description }}" />
+                                {{ form.description }}
                             </div>
                             <div class="col">
-                                <input disabled class="form-control" name="acc_type" value="{{account.acc_type}}">
+                                {{ form.acc_type }}
                             </div>
                         </div>
                     </li>

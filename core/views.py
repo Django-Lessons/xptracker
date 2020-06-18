@@ -16,11 +16,24 @@ def index(request):
 
 
 @login_required
+def accounts(request):
+
+    accounts = XpAccount.objects.filter(user=request.user)
+
+    return render(
+        request,
+        'core/accounts.html',
+        {'accounts': accounts}
+    )
+
+
+@login_required
 def start(request):
 
     XpAccountFormSet = formset_factory(XpAccountForm, extra=0)
 
     if request.method == 'POST':
+
         xpaccounts_formset = XpAccountFormSet(request.POST)
         if xpaccounts_formset.is_valid():
             for form in xpaccounts_formset:
@@ -29,14 +42,11 @@ def start(request):
                     attrs.pop('selected', False)
                     attrs['user_id'] = request.user.id
                     XpAccount.objects.create(**attrs)
-        return redirect('expenses')
 
-    #xpaccounts = [
-    #    XpAccount(**acc) for acc in common_accounts
-    #]
-    #
-    # XpAccountFormSet = [ XpAccountForm, XpAccountForm, ... ]
+        return redirect('index')
+
     formset = XpAccountFormSet(initial=common_accounts)
+
     return render(
         request,
         'core/start.html',
