@@ -13,6 +13,8 @@ SECRET_KEY = 'py8=&ynt*vq4s5^$b4u!fij9=3+)qal_*xn&u6^-v&2@+ahuwn'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+SITE_ID = 1
+
 ALLOWED_HOSTS = []
 
 
@@ -22,10 +24,14 @@ INSTALLED_APPS = [
     'core',
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
