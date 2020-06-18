@@ -7,37 +7,37 @@ INCOME = 'income'
 
 common_accounts = [
     {
-        'title': "Bank Account",
+        'name': "Bank Account",
         'description': "Your bank account",
         'acc_type': ASSET,
         'amount': 1000
     },
     {
-        'title': "Income Account",
+        'name': "Income Account",
         'description': "Account for your income like salary, consulting.",
         'acc_type': INCOME,
         'amount': 0
     },
     {
-        'title': "Groceries",
+        'name': "Groceries",
         'description': "All groceries expenses go here",
         'acc_type': EXPENSE,
         'amount': 0
     },
     {
-        'title': "Rent",
+        'name': "Rent",
         'description': "Monthly Rent",
         'acc_type': EXPENSE,
         'amount': 0
     },
     {
-        'title': "Insurances",
+        'name': "Insurances",
         'description': "All kind of insurances",
         'acc_type': EXPENSE,
         'amount': 0
     },
     {
-        'title': "Utility Bills",
+        'name': "Utility Bills",
         'description': "Like electricity bills, tv, internet",
         'acc_type': EXPENSE,
         'amount': 0
