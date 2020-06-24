@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory
 from django.shortcuts import redirect, render
 
-from .forms import XpAccountForm
+from .forms import XpAccountForm, XpTransactionForm
 from .models import ASSET, EXPENSE, INCOME, XpAccount
 
 account_templates = [
@@ -52,6 +52,18 @@ def index(request):
         return redirect('start')
 
     return render(request, 'core/index.html')
+
+
+@login_required
+def expense(request):
+
+    form = XpTransactionForm()
+
+    return render(
+        request,
+        'core/expense.html',
+        {'form': form}
+    )
 
 
 @login_required

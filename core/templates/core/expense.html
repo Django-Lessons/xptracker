@@ -1,0 +1,13 @@
+{% extends 'core/base.html' %}
+
+{% block central_content %}
+    <div class="xp-expense">
+      <h1>New Expense</h1>
+      <div class="expense">
+      	<form action="" method="POST">
+      		{% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Add" />
+        </form>
+      </div>
+{% endblock central_content %}
