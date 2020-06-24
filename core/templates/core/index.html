@@ -3,6 +3,9 @@
 {% block central_content %}
     <div class="xp-transactions">
       <h1>Expenses list</h1>
+      <div>
+            <a href="{% url 'expense' %}" class="btn btn-success">Add</a>
+      </div>
       <div class="expenses">
             {% for expense in expenses %}
             {% endfor %}

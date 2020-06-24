@@ -3,7 +3,13 @@ from django.forms import formset_factory
 from django.shortcuts import redirect, render
 
 from .forms import XpAccountForm, XpTransactionForm
-from .models import ASSET, EXPENSE, INCOME, XpAccount
+from .models import (
+    ASSET,
+    EXPENSE,
+    INCOME,
+    XpAccount,
+    XpTransaction
+)
 
 account_templates = [
     {
@@ -57,7 +63,11 @@ def index(request):
 @login_required
 def expense(request):
 
-    form = XpTransactionForm()
+    src = XpAccount.objects.get(acc_type=ASSET)
+
+    initial = XpTransaction(src=src, amount=0)
+
+    form = XpTransactionForm(instance=initial)
 
     return render(
         request,

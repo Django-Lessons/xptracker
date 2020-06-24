@@ -33,6 +33,9 @@ class XpAccount(models.Model):
         max_length=16
     )
 
+    def __str__(self):
+        return f"{self.title}/{self.acc_type}"
+
 
 class XpTransaction(models.Model):
 
@@ -57,3 +60,4 @@ class XpTransaction(models.Model):
         'User',
         on_delete=models.CASCADE
     )
+

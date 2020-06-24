@@ -31,7 +31,9 @@ class XpAccountForm(forms.Form):
 class XpTransactionForm(ModelForm):
 
     class Meta:
+
         model = XpTransaction
+
         fields = [
             'src',
             'dst',
