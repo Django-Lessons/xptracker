@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import datetime
 
 from .models import XpTransaction
 
@@ -14,7 +14,7 @@ def perform_transaction(src, dst, amount, description):
         amount=amount,
         description=description,
         user=src.user,
-        created_at=date.today()
+        created_at=datetime.now()
     )
     src.amount -= amount
     src.save()

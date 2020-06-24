@@ -39,7 +39,7 @@ class XpAccount(models.Model):
 
 class XpTransaction(models.Model):
 
-    created_at = models.DateField()
+    created_at = models.DateTimeField()
     description = models.TextField()
     amount = models.DecimalField(
         max_digits=12,
