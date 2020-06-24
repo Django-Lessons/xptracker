@@ -2,6 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory
 from django.shortcuts import redirect, render
 
+from .utils import perform_transaction
+
 from .forms import XpAccountForm, XpTransactionForm
 from .models import (
     ASSET,
@@ -57,11 +59,36 @@ def index(request):
     if XpAccount.objects.count() == 0:
         return redirect('start')
 
-    return render(request, 'core/index.html')
+    expenses = XpTransaction.objects.filter(
+        user=request.user
+    ).order_by('-created_at')
+
+    return render(
+        request,
+        'core/index.html',
+        {
+            'expenses': expenses
+        }
+    )
 
 
 @login_required
 def expense(request):
+
+    if request.method == 'POST':
+
+        xp_transaction = XpTransactionForm(request.POST)
+
+        if xp_transaction.is_valid():
+
+            perform_transaction(
+                src=xp_transaction.cleaned_data['src'],
+                dst=xp_transaction.cleaned_data['dst'],
+                amount=xp_transaction.cleaned_data['amount'],
+                description=xp_transaction.cleaned_data['description']
+            )
+
+            return redirect('index')
 
     src = XpAccount.objects.get(acc_type=ASSET)
 

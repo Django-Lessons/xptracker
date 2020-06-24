@@ -3,11 +3,26 @@
 {% block central_content %}
     <div class="xp-transactions">
       <h1>Expenses list</h1>
-      <div>
+      <div class="my-3">
             <a href="{% url 'expense' %}" class="btn btn-success">Add</a>
       </div>
-      <div class="expenses">
-            {% for expense in expenses %}
-            {% endfor %}
-      </div>
+    <table class="table table-bordered table-striped expenses">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Amount (USD)</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for expense in expenses %}
+        <tr>
+          <td>{{ expense.created_at }}</td>
+          <td>{{ expense.amount }}</td>
+          <td>{{ expense.description }}</td>
+        </tr>
+        {% endfor %}
+        
+      </tbody>
+    </table>
 {% endblock central_content %}
