@@ -2,6 +2,28 @@
 
 {% block central_content %}
     <div class="starter-template">
-      <h1>List of transactions</h1>
+      <h1>Expenses</h1>
     </div>
+    <div class="my-3">
+        <a href="{% url 'expense' %}" class="btn btn-success">Add</a>
+    </div>
+    <table class="table table-bordered table-striped expenses">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Amount (USD)</th>
+            <th scope="col">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for expense in expenses %}
+                <tr>
+                  <td>{{ expense.created_at | date:"d.m.Y" }}</td>
+                  <td>{{ expense.amount }}</td>
+                  <td>{{ expense.description }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock central_content %}

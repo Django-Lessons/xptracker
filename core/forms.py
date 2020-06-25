@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import ASSET, EXPENSE, INCOME
+from .models import ASSET, EXPENSE, INCOME, XpTransaction
 
 
 class XpAccountForm(forms.Form):
@@ -26,3 +26,17 @@ class XpAccountForm(forms.Form):
     selected = forms.BooleanField(
         required=False
     )
+
+
+class XpTransactionForm(forms.ModelForm):
+
+    class Meta:
+
+        model = XpTransaction
+
+        fields = [
+            'src',
+            'dst',
+            'amount',
+            'description'
+        ]
